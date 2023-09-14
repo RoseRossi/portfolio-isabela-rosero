@@ -1,0 +1,54 @@
+.container-info{
+    display: flex;
+    width: 35%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+}
+
+.card-info{
+    padding: 2rem;
+    border-radius: 1rem;
+    border-bottom: 8px solid #54c1ef;
+    text-align: center;
+    background: #d4f6fd;
+    box-shadow: 0 0 1rem rgba(45, 45, 45, 0.1);
+}
+
+.nombre{
+    font-size: 3rem;
+    font-weight: bold;
+    color: #54c1ef;
+}	
+
+.bio{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1b7399;
+}
+
+@media (max-width: 768px) {
+    .container-info{
+        width: 100%;
+    }
+    .card-info {
+        max-width: 100%; 
+    }
+
+    .nombre {
+        font-size: 2rem; 
+    }
+
+    .bio {
+        font-size: 1.2rem; 
+    }
+}
+
+
+
+.boxRef{
+    position: absolute left;
+}
