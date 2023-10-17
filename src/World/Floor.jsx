@@ -12,7 +12,7 @@ const Floor = () => {
     
     return(
         <mesh position-y={-0.5} rotation-x={-Math.PI / 2} receiveShadow>
-                <planeGeometry attach="geometry" args={[12, 12]} />
+                <planeGeometry attach="geometry" args={[15, 15]} />
                 <meshStandardMaterial { ... propsTexture} roughness={-2} metalness={-2} />
         </mesh>
     )
