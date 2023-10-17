@@ -9,12 +9,23 @@ const Penguin = () => {
     console.log(penguinModel);
 
     useEffect(() => {
-        const action = actions["Run"]
-        action.play()
-    }, [])
+        const action = actions["Run"];
+        action.play();
+    
+        if (penguinModel.scenes.length) {
+            const scene = penguinModel.scenes[0];
+            scene.traverse((node) => {
+                if (node.isMesh) {
+                    node.castShadow = true;
+                    node.receiveShadow = true;
+                }
+            });
+        }
+    }, []);
+    
 
     return (
-        <mesh ref={penguinRef} position-x={2} position-y={-0.5} position-z={2} rotation-y={-Math.PI * -0.03} scale={0.004}>
+        <mesh ref={penguinRef} position-x={2} position-y={-0.5} position-z={2} rotation-y={-Math.PI * -0.03} scale={0.004} castShadow={true}>
             <primitive object = {penguinModel.scene} />
         </mesh>
     )

@@ -10,6 +10,7 @@ const App = () => {
             biografia={"Student"}
          />
          <Canvas
+            shadows = {true}
             camera={{position: [2,0,5]}}
          >
             <Experience />

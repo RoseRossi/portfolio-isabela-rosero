@@ -1,7 +1,7 @@
 import { useTexture } from "@react-three/drei";
 
 const Floor = () => {
-    const PATH = "/assets/textures/snow/"
+    const PATH = "/assets/textures/snow/";
     const propsTexture = useTexture({
             map: PATH + 'snow_diff.jpg',
         normalMap: PATH + 'snow_nor.jpg',
@@ -11,9 +11,9 @@ const Floor = () => {
     })
     
     return(
-        <mesh position-y={-2} rotation-x={-Math.PI / 2} >
+        <mesh position-y={-0.5} rotation-x={-Math.PI / 2} receiveShadow>
                 <planeGeometry attach="geometry" args={[12, 12]} />
-                <meshStandardMaterial { ... propsTexture} roughness={-2} metalness={-5} />
+                <meshStandardMaterial { ... propsTexture} roughness={-2} metalness={-2} />
         </mesh>
     )
 }

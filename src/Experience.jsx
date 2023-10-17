@@ -4,6 +4,9 @@ import { useFrame } from "@react-three/fiber";
 import Penguin from "./World/Penguin";
 import { useTexture } from "@react-three/drei";
 import Floor from "./World/Floor";
+import Lights from "./World/Lights";
+import Table from "./World/Table";
+import Environments from "./World/Environments";
 
 const Experience = ({title, info}) => {
     const boxRef = useRef();
@@ -13,32 +16,33 @@ const Experience = ({title, info}) => {
 
     useFrame((state, delta) => {
         boxRef.current.rotation.x += 1 * delta;
-        coneRef.current.position.y = Math.sin(state.clock.getElapsedTime());
-        sphereRef.current.rotation.y = Math.cos(state.clock.getElapsedTime());
-        torusRef.current.position.x = Math.sin(state.clock.getElapsedTime()) + 5;
+        coneRef.current.rotation.y = Math.cos(state.clock.getElapsedTime());
+        sphereRef.current.position.y = Math.sin(state.clock.getElapsedTime())+2;
+        torusRef.current.position.x = Math.sin(state.clock.getElapsedTime())-1;
     });
     
     return (
         <>
         <OrbitControls makeDefault />
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={2} />
+        <Lights/>
         <Penguin/>
+        <Table/>
+        <Environments/>
         <Floor/>
-        <mesh ref={boxRef} position={[-5.5,0,-5]}>
-            <boxGeometry args={[1,1,1]} />
+        <mesh ref={boxRef} position={[-5.5,1,-5]} castShadow>
+            <boxGeometry args={[0.5,0.5,0.5]} />
             <meshStandardMaterial color="#54C1EF"  />
         </mesh>
-        <mesh ref={coneRef} position={[-3,0,-5]}>
-            <coneGeometry args={[1, 2, 8]} />
+        <mesh ref={coneRef} position={[-4.5,1,-5]} castShadow>
+            <coneGeometry args={[0.5, 1, 6.5]} />
             <meshPhongMaterial color="#54C1EF"/>
         </mesh>
-        <mesh ref={sphereRef} position={[0,0,-5]}>
-            <sphereGeometry args={[1, 32, 16]} />
+        <mesh ref={sphereRef} position={[-3.5,1,-5]} castShadow>
+            <sphereGeometry args={[0.5, 30, 10]} />
             <meshToonMaterial color="#54C1EF"/>
         </mesh>
-        <mesh ref={torusRef} position={[3,0,-5]}>
-            <torusGeometry args={[1, -0.4, 50, 500]} />
+        <mesh ref={torusRef} position={[0,1.2,-5]} castShadow>
+            <torusGeometry args={[0.5, -0.2, 50, 500]} />
             <meshLambertMaterial color="#54C1EF"/>
         </mesh>
         </>
