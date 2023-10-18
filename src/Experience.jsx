@@ -7,6 +7,9 @@ import Floor from "./World/Floor";
 import Lights from "./World/Lights";
 import Table from "./World/Table";
 import Environments from "./World/Environments";
+import Sign from "./World/Sign";
+import WelcomeText from "./World/WelcomeText";
+import AboutMeText from "./World/AboutMeText";
 
 const Experience = ({title, info}) => {
     const boxRef = useRef();
@@ -29,6 +32,10 @@ const Experience = ({title, info}) => {
         <Table/>
         <Environments/>
         <Floor/>
+        <Sign>
+            <WelcomeText/>
+            <AboutMeText/>
+        </Sign>
         <mesh ref={boxRef} position={[-5.5,1,-5]} castShadow>
             <boxGeometry args={[0.5,0.5,0.5]} />
             <meshStandardMaterial color="#54C1EF"  />

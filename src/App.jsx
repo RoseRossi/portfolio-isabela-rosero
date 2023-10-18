@@ -7,11 +7,11 @@ const App = () => {
         <>
         <Info 
             nombre={"Isabela Rosero"}
-            biografia={"Student"}
+            biografia={"Systems Engineering student"}
          />
          <Canvas
             shadows = {true}
-            camera={{position: [2,0,5]}}
+            camera={{position: [2,1,7]}}
          >
             <Experience />
          </Canvas>

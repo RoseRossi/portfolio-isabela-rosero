@@ -4,8 +4,6 @@ const { useGLTF, useAnimations } = require("@react-three/drei")
 const Table = () => {
     const tableRef = useRef();
     const tableModel = useGLTF('/assets/models/table/scene.gltf')
-    const{animations} = tableModel;
-    const{actions} =useAnimations(animations, tableRef);
     console.log(tableModel);
 
     useEffect(() => {

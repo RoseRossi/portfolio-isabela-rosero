@@ -25,7 +25,7 @@ const Penguin = () => {
     
 
     return (
-        <mesh ref={penguinRef} position-x={2} position-y={-0.5} position-z={2} rotation-y={-Math.PI * -0.03} scale={0.004} castShadow={true}>
+        <mesh ref={penguinRef} position-x={1.5} position-y={-0.5} position-z={2} rotation-y={-Math.PI * -0.03} scale={0.004} castShadow={true}>
             <primitive object = {penguinModel.scene} />
         </mesh>
     )

@@ -6,7 +6,7 @@ const Lights = () => {
     const directionalLightRef = useRef();
     //useHelper(directionalLightRef, DirectionalLightHelper);
     const pointLightRef = useRef();
-    //useHelper(pointLightRef, PointLightHelper, 1, "hotpink");
+    //useHelper(pointLightRef, PointLightHelper, 5, "purple");
     return <>
         <ambientLight intensity={0.5} />
         <directionalLight 
@@ -21,7 +21,7 @@ const Lights = () => {
             shadow-camera-top={4}
             shadow-camera-bottom={-4}
         />
-        <pointLight position={[-4, 3, -5]} intensity={100} color={"purple"} />
+        <pointLight position={[3.5, 1, 2.5]} intensity={2} color={"purple"} />
     </>
     }
     export default Lights;
