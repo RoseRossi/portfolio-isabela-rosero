@@ -10,6 +10,9 @@ import Environments from "./World/Environments";
 import Sign from "./World/Sign";
 import WelcomeText from "./World/WelcomeText";
 import AboutMeText from "./World/AboutMeText";
+import Room from "./World/Room";
+import { Physics, RigidBody } from "@react-three/rapier";
+import { Snowman } from "./World/Snowman";
 
 const Experience = ({title, info}) => {
     const boxRef = useRef();
@@ -36,6 +39,10 @@ const Experience = ({title, info}) => {
             <WelcomeText/>
             <AboutMeText/>
         </Sign>
+        <Physics debug>
+            <Room/>
+        </Physics>
+        <Snowman position-x={-3} position-y={0.5} position-z={1} rotation-y={-Math.PI * -0.03} scale={1}/>
         <mesh ref={boxRef} position={[-5.5,1,-5]} castShadow>
             <boxGeometry args={[0.5,0.5,0.5]} />
             <meshStandardMaterial color="#54C1EF"  />
