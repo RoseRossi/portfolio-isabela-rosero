@@ -15,6 +15,7 @@ const Floor = () => {
                 <planeGeometry attach="geometry" args={[15, 15]} />
                 <meshStandardMaterial { ... propsTexture} roughness={-2} metalness={-2} />
         </mesh>
+        
     )
 }
 

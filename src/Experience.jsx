@@ -1,5 +1,5 @@
 import { OrbitControls } from "@react-three/drei";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import Penguin from "./World/Penguin";
 import { useTexture } from "@react-three/drei";
@@ -10,7 +10,6 @@ import Environments from "./World/Environments";
 import Sign from "./World/Sign";
 import WelcomeText from "./World/WelcomeText";
 import AboutMeText from "./World/AboutMeText";
-import Room from "./World/Room";
 import { Physics, RigidBody } from "@react-three/rapier";
 import { Snowman } from "./World/Snowman";
 
@@ -19,6 +18,10 @@ const Experience = ({title, info}) => {
     const coneRef = useRef();
     const sphereRef = useRef();
     const torusRef = useRef();
+    const ballBodyRef = useRef();
+    const onHandleSphere = () => {
+        console.log(ballBodyRef.current);
+    }
 
     useFrame((state, delta) => {
         boxRef.current.rotation.x += 1 * delta;
@@ -34,14 +37,27 @@ const Experience = ({title, info}) => {
         <Penguin/>
         <Table/>
         <Environments/>
-        <Floor/>
+        <Physics>
+            <RigidBody>
+                <Floor/>
+            </RigidBody>
+            <RigidBody 
+                ref={ballBodyRef} 
+                colliders={"ball"} 
+                friction={0} 
+                restitution={0} 
+                position={[4, 2, 4]}
+            >
+                <mesh scale={0.2} onClick={onHandleSphere}>
+                    <sphereGeometry />
+                    <meshStandardMaterial color="darkblue" />
+                </mesh>
+            </RigidBody>
+        </Physics>
         <Sign>
             <WelcomeText/>
             <AboutMeText/>
         </Sign>
-        <Physics debug>
-            <Room/>
-        </Physics>
         <Snowman position-x={-3} position-y={0.5} position-z={1} rotation-y={-Math.PI * -0.03} scale={1}/>
         <mesh ref={boxRef} position={[-5.5,1,-5]} castShadow>
             <boxGeometry args={[0.5,0.5,0.5]} />
