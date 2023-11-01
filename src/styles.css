@@ -18,7 +18,15 @@ canvas{
     padding: 1.5rem;
     border-radius: 2rem;
     user-select: none;
-    }
+}
+
+.simple-text {
+    background: #19066b7a;
+    color: rgb(204, 201, 207);
+    padding: 1.5rem;
+    border-radius: 2rem;
+    user-select: none;
+}
 
 
     

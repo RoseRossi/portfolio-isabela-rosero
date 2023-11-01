@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei";
+import { Html, OrbitControls } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import Penguin from "./World/Penguin";
@@ -19,10 +19,24 @@ const Experience = ({title, info}) => {
     const sphereRef = useRef();
     const torusRef = useRef();
     const ballBodyRef = useRef();
+    const [play, setPlay] = useState(false);
+    const [hitSound] = useState(() => new Audio('/assets/sounds/hit.wav')) 
     const onHandleSphere = () => {
-        console.log(ballBodyRef.current);
+        ballBodyRef.current.wakeUp();
     }
 
+    useEffect(() => {
+        if (play) {
+        hitSound.currentTime = 0
+        hitSound.volume = Math.random()
+        hitSound.play();
+        }
+    }, [play])
+
+    useEffect(() => {
+        ballBodyRef.current.sleep()
+        },[])
+       
     useFrame((state, delta) => {
         boxRef.current.rotation.x += 1 * delta;
         coneRef.current.rotation.y = Math.cos(state.clock.getElapsedTime());
@@ -46,7 +60,9 @@ const Experience = ({title, info}) => {
                 colliders={"ball"} 
                 friction={0} 
                 restitution={0} 
-                position={[4, 2, 4]}
+                position={[4, 1, 4]}
+                onCollisionEnter={()=>setPlay(!play)}
+                onCollisionLeave={()=>setPlay(!play)}
             >
                 <mesh scale={0.2} onClick={onHandleSphere}>
                     <sphereGeometry />
